@@ -7,23 +7,31 @@ import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
 
-public class GetEntry implements Serializable {
+public class EntryAdded implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private final LocalDate date;
 
-    public GetEntry(LocalDate date) {
+    private final LocalDate date;
+    private final String value;
+
+    public EntryAdded(LocalDate date, String value) {
         this.date = Objects.requireNonNull(date);
+        this.value = Objects.requireNonNull(value);
     }
 
     public LocalDate getDate() {
-        return date;
+        return this.date;
+    }
+
+    public String getValue() {
+        return this.value;
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("date", this.date.format(DateTimeFormatter.BASIC_ISO_DATE))
-                .toString();
+            .add("date", this.date.format(DateTimeFormatter.BASIC_ISO_DATE))
+            .add("value", this.value)
+            .toString();
     }
 }

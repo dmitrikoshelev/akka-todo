@@ -1,12 +1,15 @@
 package com.github.lpedrosa.todo.actor.server.message.request;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import com.google.common.base.MoreObjects;
 
-public class AddEntry {
+public class AddEntry implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private final LocalDate date;
     private final String value;
